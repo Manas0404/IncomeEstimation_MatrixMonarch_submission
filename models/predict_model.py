@@ -1,22 +1,15 @@
 import pandas as pd
+import numpy as np
 import joblib
-from features.feat_engineering import preprocess
 
-def predict(test_csv_path, output_csv_path):
-    df = pd.read_csv(test_csv_path)
-    X = preprocess(df)
-    model = joblib.load('./models/my_final_model.pkl')
-    preds = model.predict(X)
-
-    # Output CSV: ID, INCOME
-    submission = pd.DataFrame({
-        "ID": df["ID"] if "ID" in df.columns else range(len(df)),
-        "INCOME": preds
-    })
-    submission.to_csv(output_csv_path, index=False)
-    print(f"Predictions saved to {output_csv_path}")
-
-if __name__ == '__main__':
-    import sys
-    predict(sys.argv[1], sys.argv[2])
- 
+def predict(X):
+    model_names = joblib.load('./models/model_list.pkl')
+    preds = []
+    for name in model_names:
+        model = joblib.load(f'./models/model_{name}.pkl')
+        preds.append(model.predict(X))
+    preds = np.array(preds)
+    ensemble_preds = preds.mean(axis=0)
+    # Also get feature importances (just from RF for now)
+    feature_imp = joblib.load('./models/model_rf.pkl').feature_importances_
+    return ensemble_preds, feature_imp
