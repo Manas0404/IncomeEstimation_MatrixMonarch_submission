@@ -7,7 +7,7 @@ from features.feat_engineering import preprocess
 
 def train():
     # Load data
-    df = pd.read_csv("data/Hackathon_bureau_data_400.csv")
+    df = pd.read_csv("data/Hackathon_bureau_data_50000.csv")
     print("Loaded data shape:", df.shape)
 
     # Target variable
