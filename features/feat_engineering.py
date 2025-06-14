@@ -17,7 +17,7 @@ def preprocess(df):
     """
     Final feature engineering:
     - Label-encode ALL categoricals (object columns and non-numeric categoricals)
-    - Forces all columns to be numeric (float32)
+    - Forces all columns to be numeric float32
     - Fills missing values with -1
     """
     df = df.copy()
