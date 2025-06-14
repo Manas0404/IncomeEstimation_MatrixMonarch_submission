@@ -3,7 +3,7 @@ import joblib
 from features.feat_engineering import preprocess
 
 # Load the test data
-df_test = pd.read_csv('data/Hackathon_bureau_data_50000.csv')
+df_test = pd.read_csv('data/Hackathon_bureau_data_400.csv')
 
 # Preprocess (same as training)
 X_test = preprocess(df_test)
