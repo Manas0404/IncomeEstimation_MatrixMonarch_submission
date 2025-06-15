@@ -26,7 +26,7 @@ submission = pd.DataFrame({'id': df_test['id'], 'target_income': final_pred})
 submission.to_csv('output/output_sample.csv', index=False)
 print("Predictions saved to output/output_sample.csv")
 
-# If test labels are available, print metrics
+# If test labels are available,  print metrics
 if 'target_income' in df_test.columns:
     from sklearn.metrics import mean_squared_error, mean_absolute_error, r2_score
     y_true = df_test['target_income']

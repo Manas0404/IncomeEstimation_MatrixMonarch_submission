@@ -81,7 +81,7 @@ def train():
     X1 = preprocess_fill_minus1(df, ignore_cols)
     metrics1 = run_and_score(X1, y, label="All -1")
 
-    # --- Mean for continuous, -1 for rest strategy ---
+    # --- Mean for continuous, -1 for rest strategy --
     X2 = preprocess_fill_mean(df, ignore_cols, continuous_cols)
     metrics2 = run_and_score(X2, y, label="Continuous mean, others -1")
 
