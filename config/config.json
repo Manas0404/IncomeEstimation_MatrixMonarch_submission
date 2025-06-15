@@ -1,0 +1,37 @@
+{
+  "data": {
+    "train_csv": "data/Hackathon_bureau_data_50000.csv",
+    "test_csv": "data/Hackathon_bureau_data_400.csv"
+  },
+  "output": {
+    "model_dir": "models",
+    "model_file": "models/my_final_model.pkl",
+    "submission": "output/output_sample.csv"
+  },
+  "features": {
+    "ignore": ["id", "INCOME", "target_income"],
+    "continuous_auto": true,      
+    "continuous_cols": []          
+  },
+  "preprocessing": {
+    "impute_strategy": "mean",    
+    "label_encode": true
+  },
+  "model": {
+    "use_rf": true,
+    "rf_params": {
+      "n_estimators": 150,
+      "max_depth": null,
+      "min_samples_split": 2
+    },
+    "use_xgb": true,
+    "xgb_params": {
+      "n_estimators": 150,
+      "max_depth": 6,
+      "learning_rate": 0.1,
+      "subsample": 0.8
+    },
+    "ensemble": true,              
+    "test_metrics": true
+  }
+}
