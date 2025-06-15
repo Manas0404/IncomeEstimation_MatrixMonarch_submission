@@ -23,7 +23,7 @@ def calc_metrics(y_true, y_pred, prefix=""):
 def run_and_score(X, y, random_state=42, label="Model"):
     X_train, X_val, y_train, y_val = train_test_split(X, y, test_size=0.15, random_state=random_state)
 
-    # RandomForest
+    # Random Forest
     rf = RandomForestRegressor(n_estimators=150, random_state=random_state, n_jobs=-1)
     rf.fit(X_train, y_train)
     rf_pred = rf.predict(X_val)
